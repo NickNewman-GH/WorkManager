@@ -9,6 +9,12 @@ class WeatherWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams)
 {
     override fun doWork(): Result {
+        val cityIDs = inputData.getIntArray("cities")
+        
+        cityIDs?.let {
+            for (c in it)
+                Log.d("mytag", "city $c")
+        }
         Log.d("mytag", "work success")
         return Result.success()
     }
